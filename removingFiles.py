@@ -30,8 +30,7 @@ def main():
 			if seconds >= get_file_or_folder_age(root_folder):
 
 				# removing the folder
-				remove_folder(root_folder)
-				deleted_folders_count += 1 # incrementing count
+				
 
 				# breaking after removing the root_folder
 				break
@@ -48,8 +47,8 @@ def main():
 					if seconds >= get_file_or_folder_age(folder_path):
 
 						# invoking the remove_folder function
-						remove_folder(folder_path)
-						deleted_folders_count += 1 # incrementing count
+
+						# incrementing count
 
 
 				# checking the current directory files
@@ -62,8 +61,8 @@ def main():
 					if seconds >= get_file_or_folder_age(file_path):
 
 						# invoking the remove_file function
-						remove_file(file_path)
-						deleted_files_count += 1 # incrementing count
+						
+						# incrementing count
 
 		else:
 
@@ -72,17 +71,18 @@ def main():
 			if seconds >= get_file_or_folder_age(path):
 
 				# invoking the file
-				remove_file(path)
-				deleted_files_count += 1 # incrementing count
+				
+				
+				# incrementing count
 
 	else:
 
 		# file/folder is not found
-		print(f'"{path}" is not found')
-		deleted_files_count += 1 # incrementing count
+		
 
-	print(f"Total folders deleted: {deleted_folders_count}")
-	print(f"Total files deleted: {deleted_files_count}")
+		# incrementing count
+
+	
 
 
 def remove_folder(path):
@@ -90,13 +90,13 @@ def remove_folder(path):
 	# removing the folder
 	if not shutil.rmtree(path):
 
-		# success message
-		print(f"{path} is removed successfully")
+		# success message, use print
+		
 
 	else:
 
-		# failure message
-		print(f"Unable to delete the "+path)
+		# failure message,use print
+		
 
 
 
@@ -105,23 +105,23 @@ def remove_file(path):
 	# removing the file
 	if not os.remove(path):
 
-		# success message
-		print(f"{path} is removed successfully")
+		# success message, use print
+		
 
 	else:
 
-		# failure message
-		print("Unable to delete the "+path)
+		# failure message, use print
+		
 
 
 def get_file_or_folder_age(path):
 
 	# getting ctime of the file/folder
 	# time will be in seconds
-	ctime = os.stat(path).st_ctime
+	
 
 	# returning the time
-	return ctime
+	
 
 
 if __name__ == '__main__':
